@@ -57,6 +57,7 @@ class ExpenseData {
     return startOfWeek!;
   }
 
+  // creating a map to calculate daily expense summary
   Map<String, double> calculateDailyExpenseSummary() {
     Map<String, double> dailyExpenseSummary = {};
 
