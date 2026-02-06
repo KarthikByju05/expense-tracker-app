@@ -1,5 +1,4 @@
 import 'package:expensetracker/bar%20graph/individual_bar.dart';
-import 'package:flutter/services.dart';
 
 class BarData {
   final double sunAmount;
