@@ -26,10 +26,16 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             //expense name
-            TextField(controller: newExpenseNameController),
+            TextField(
+              controller: newExpenseNameController,
+              decoration: const InputDecoration(hintText: "Expense Name"),
+            ),
 
             // expense amount
-            TextField(controller: newExpenseAmountController),
+            TextField(
+              controller: newExpenseAmountController,
+              decoration: const InputDecoration(hintText: "Dollars"),
+            ),
           ],
         ),
 
@@ -76,13 +82,17 @@ class _HomePageState extends State<HomePage> {
       builder: (context, value, child) => Scaffold(
         backgroundColor: Colors.grey[300],
         floatingActionButton: FloatingActionButton(
+          shape: const CircleBorder(),
           onPressed: addNewExpense,
-          child: Icon(Icons.add),
+          backgroundColor: Colors.black,
+          child: Icon(Icons.add, color: Colors.white),
         ),
         body: ListView(
           children: [
             // weekly summary
             ExpenseSummary(startOfWeek: value.startOfWeekData()),
+
+            const SizedBox(height: 20),
             // expense list
             ListView.builder(
               shrinkWrap: true,
