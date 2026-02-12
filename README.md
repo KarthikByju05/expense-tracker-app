@@ -1,6 +1,6 @@
 # Expense Tracker
 
-A simple expense tracker app built using **Flutter** to practice UI development and basic hive database management.
+Simple expense tracker app built using **Flutter** to practice UI development and basic hive database management.
 
 ## Features
 - Add and remove expenses
