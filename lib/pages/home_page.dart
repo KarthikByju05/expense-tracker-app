@@ -59,19 +59,32 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // delete expense
+  void deleteExpense(ExpenseItem expense) {
+    Provider.of<ExpenseData>(context, listen: false).deleteExpense(expense);
+  }
+
+  // save item
   void save() {
-    // create new expense item
-    ExpenseItem newExpense = ExpenseItem(
-      name: newExpenseNameController.text,
-      amount: newExpenseAmountController.text,
-      dateTime: DateTime.now(),
-    );
+    // check if both controllers are filled before saving
+    if (newExpenseNameController.text.isNotEmpty &&
+        newExpenseAmountController.text.isNotEmpty) {
+      // create new expense item
+      ExpenseItem newExpense = ExpenseItem(
+        name: newExpenseNameController.text,
+        amount: newExpenseAmountController.text,
+        dateTime: DateTime.now(),
+      );
 
-    //add the expense item
-    Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
+      //add the expense item
+      Provider.of<ExpenseData>(
+        context,
+        listen: false,
+      ).addNewExpense(newExpense);
 
-    Navigator.pop(context);
-    clear();
+      Navigator.pop(context);
+      clear();
+    }
   }
 
   void cancel() {
@@ -111,6 +124,8 @@ class _HomePageState extends State<HomePage> {
                 name: value.getAllExpenseList()[index].name,
                 amount: value.getAllExpenseList()[index].amount,
                 dateTime: value.getAllExpenseList()[index].dateTime,
+                deleteTapped: (p0) =>
+                    deleteExpense(value.getAllExpenseList()[index]),
               ),
             ),
           ],
