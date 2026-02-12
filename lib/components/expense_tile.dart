@@ -5,9 +5,9 @@ class ExpenseTile extends StatelessWidget {
   final String name;
   final String amount;
   final DateTime dateTime;
-  void Function(BuildContext)? deleteTapped;
+  final void Function(BuildContext)? deleteTapped;
 
-  ExpenseTile({
+  const ExpenseTile({
     super.key,
     required this.name,
     required this.amount,
