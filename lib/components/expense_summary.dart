@@ -1,4 +1,4 @@
-import 'package:expensetracker/bar%20graph/bar_graph.dart';
+import 'package:expensetracker/bar_graph/bar_graph.dart';
 import 'package:expensetracker/data/expense_data.dart';
 import 'package:expensetracker/datetime/data_time_helper.dart';
 import 'package:flutter/material.dart';
@@ -93,47 +93,51 @@ class ExpenseSummary extends StatelessWidget {
     );
 
     return Consumer<ExpenseData>(
-      builder: (context, value, child) => Column(
-        children: [
-          // week total
-          Padding(
-            padding: const EdgeInsets.all(25.0),
-            child: Row(
-              children: [
-                Text(
-                  "Week Total : ",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "\$${calcluateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}",
-                ),
-              ],
-            ),
-          ),
-
-          SizedBox(
-            height: 200,
-            child: MyBarGraph(
-              maxY: calculateMax(
-                value,
-                sunday,
-                monday,
-                tuesday,
-                wednesday,
-                thursday,
-                friday,
-                saturday,
+      builder: (context, value, child) => Padding(
+        padding: const EdgeInsets.only(top: 20.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            // week total
+            Padding(
+              padding: const EdgeInsets.all(25.0),
+              child: Row(
+                children: [
+                  Text(
+                    "Week Total : ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "\$${calcluateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}",
+                  ),
+                ],
               ),
-              sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
-              monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
-              tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
-              wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
-              thurAmount: value.calculateDailyExpenseSummary()[thursday] ?? 0,
-              friAmount: value.calculateDailyExpenseSummary()[friday] ?? 0,
-              satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,
             ),
-          ),
-        ],
+
+            AspectRatio(
+              aspectRatio: 1.7,
+              child: MyBarGraph(
+                maxY: calculateMax(
+                  value,
+                  sunday,
+                  monday,
+                  tuesday,
+                  wednesday,
+                  thursday,
+                  friday,
+                  saturday,
+                ),
+                sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
+                monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
+                tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
+                wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
+                thurAmount: value.calculateDailyExpenseSummary()[thursday] ?? 0,
+                friAmount: value.calculateDailyExpenseSummary()[friday] ?? 0,
+                satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
