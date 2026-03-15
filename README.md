@@ -1,16 +1,26 @@
-# expensetracker
+# Expense Tracker
 
-A new Flutter project.
+Simple expense tracker app built using **Flutter** to practice UI development and basic hive database management.
+
+## Features
+- Add and remove expenses
+- Clean and minimal UI
+- Updating bar graph
+
+## Tech Stack
+- Flutter
+- Dart
+- Hive
+
+## Learning Outcomes
+- Hive database management
+- Basic state handling
+- Real-device testing
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this project locally:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter pub get
+flutter run
