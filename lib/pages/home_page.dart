@@ -109,26 +109,28 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.black,
           child: Icon(Icons.add, color: Colors.white),
         ),
-        body: ListView(
-          children: [
-            // weekly summary
-            ExpenseSummary(startOfWeek: value.startOfWeekData()),
+        body: SafeArea(
+          child: ListView(
+            children: [
+              // weekly summary
+              ExpenseSummary(startOfWeek: value.startOfWeekData()),
 
-            const SizedBox(height: 20),
-            // expense list
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: value.getAllExpenseList().length,
-              itemBuilder: (context, index) => ExpenseTile(
-                name: value.getAllExpenseList()[index].name,
-                amount: value.getAllExpenseList()[index].amount,
-                dateTime: value.getAllExpenseList()[index].dateTime,
-                deleteTapped: (p0) =>
-                    deleteExpense(value.getAllExpenseList()[index]),
+              const SizedBox(height: 20),
+              // expense list
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: value.getAllExpenseList().length,
+                itemBuilder: (context, index) => ExpenseTile(
+                  name: value.getAllExpenseList()[index].name,
+                  amount: value.getAllExpenseList()[index].amount,
+                  dateTime: value.getAllExpenseList()[index].dateTime,
+                  deleteTapped: (p0) =>
+                      deleteExpense(value.getAllExpenseList()[index]),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
